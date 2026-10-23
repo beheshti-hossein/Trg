@@ -10,12 +10,11 @@ import turtle
 
 # --- Settings ---
 SCALE = 22             # Size of the heart
-Y_OFFSET = 70          # Shift the heart up to leave room for the text
+Y_OFFSET = 40          # Shift the heart up to center it
 LAYERS = 14            # Number of nested color layers inside the heart
 STEPS = 240            # Points on the heart outline (higher = smoother)
 POINTS_PER_FRAME = 4   # Points added per frame (higher = faster)
 FRAME_DELAY = 8        # Milliseconds between frames (lower = faster)
-TEXT = "I Love Python"
 
 
 def heart_point(t, scale):
@@ -94,21 +93,9 @@ def draw_heart(screen):
         screen.getcanvas().after(FRAME_DELAY)
 
 
-def write_text(screen):
-    """Write the message below the heart (not inside it)."""
-    writer = turtle.Turtle()
-    writer.hideturtle()
-    writer.penup()
-    writer.goto(0, heart_point(math.pi, SCALE)[1] - 70)  # below the tip
-    writer.color("white")
-    writer.write(TEXT, align="center", font=("Arial", 28, "bold"))
-    screen.update()
-
-
 def main():
     screen = setup_screen()
     draw_heart(screen)
-    write_text(screen)
     turtle.done()  # keep the window open until the user closes it
 
 
